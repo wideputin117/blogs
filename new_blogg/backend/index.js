@@ -10,6 +10,9 @@ const { error } = require('console');
 const app = express();
 app.use(express.json());
 
+let URI ; // add your mongo connection string
+
+
 const corsOptions = {
   origin: 'http://localhost:3000',  
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -18,7 +21,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://myAtlasDBUser:El1NwUeJZzAqvcpT@myatlasclusteredu.6e5ww98.mongodb.net/new_blogs?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 async function createAdmin() {
